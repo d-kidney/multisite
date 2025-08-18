@@ -1,0 +1,55 @@
+{
+  "unique_files_to_move": [
+    "assets/component-enquiry.css",
+    "assets/enquiry-checkout-style.css",
+    "assets/enquiry-config.js",
+    "assets/enquiry-form.js",
+    "assets/enquiry.js",
+    "snippets/enquiry-drawer.liquid",
+    "snippets/enquiry-icon-bubble.liquid",
+    "snippets/enquiry-notification.liquid",
+    "snippets/page-enquiry-form.liquid",
+    "assets/custom-grouped-product-option-picker.js",
+    "assets/custom-grouped-product.css",
+    "snippets/custom-grouped-product-option-picker.liquid",
+    "snippets/custom-grouped-product-pricing.liquid"
+  ],
+  "files_with_enquiry_refs": [
+    "assets/component-enquiry.css",
+    "assets/enquiry-checkout-style.css",
+    "assets/enquiry-form.js",
+    "assets/enquiry.js",
+    "layout/theme.liquid",
+    "sections/header.liquid",
+    "snippets/enquiry-drawer.liquid",
+    "snippets/enquiry-icon-bubble.liquid",
+    "snippets/enquiry-notification.liquid",
+    "snippets/page-enquiry-form.liquid",
+    "templates/page.enquiry-form.liquid"
+  ],
+  "files_with_grouped_refs": [
+    "assets/custom-grouped-product-option-picker.js",
+    "assets/custom-grouped-product.css",
+    "assets/custom.css",
+    "sections/main-product.liquid",
+    "snippets/buy-buttons.liquid",
+    "snippets/card-product.liquid",
+    "snippets/custom-grouped-product-option-picker.liquid",
+    "snippets/custom-grouped-product-pricing.liquid",
+    "snippets/price.liquid"
+  ],
+  "files_with_availability_refs": [
+    "assets/predictive-search.js",
+    "assets/unavailable-product.js",
+    "assets/unavailable-variant-handler.js",
+    "sections/main-product.liquid",
+    "snippets/buy-buttons.liquid",
+    "snippets/custom-grouped-product-pricing.liquid",
+    "snippets/custom-product-availability.liquid",
+    "snippets/main-script.liquid",
+    "snippets/price.liquid",
+    "snippets/product-variant-options.liquid",
+    "snippets/unavailable-product-notice.liquid"
+  ],
+  "total_files_affected": 27
+}

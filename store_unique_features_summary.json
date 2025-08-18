@@ -1,0 +1,187 @@
+{
+  "store_uniqueness_ranking": {
+    "build4less": {
+      "rank": 1,
+      "unique_file_count": 19,
+      "custom_css_size_kb": 33.9,
+      "major_unique_features": [
+        "Full enquiry system (5 files)",
+        "B2B context templates",
+        "Advanced grouped products",
+        "Search Z-index fixes",
+        "Unavailable product handling"
+      ],
+      "business_focus": "B2B customers, complex product enquiries",
+      "complexity_level": "Advanced"
+    },
+    "tiles4less": {
+      "rank": 2,
+      "unique_file_count": 0,
+      "custom_css_size_kb": 30.6,
+      "major_unique_features": [
+        "Tile-specific styling variations",
+        "Standard grouped products",
+        "Full icon set",
+        "Unavailable product handling"
+      ],
+      "business_focus": "Tile specialists",
+      "complexity_level": "Standard"
+    },
+    "insulation4less": {
+      "rank": 3,
+      "unique_file_count": 0,
+      "custom_css_size_kb": 31.9,
+      "major_unique_features": [
+        "UK/Ireland geographic targeting",
+        "Standard grouped products",
+        "Full icon set"
+      ],
+      "business_focus": "UK insulation market",
+      "complexity_level": "Standard"
+    },
+    "insulation4us": {
+      "rank": 4,
+      "unique_file_count": 0,
+      "custom_css_size_kb": 29.0,
+      "major_unique_features": [
+        "US market targeting",
+        "Standard grouped products",
+        "Shared branding with roofing4us"
+      ],
+      "business_focus": "US insulation market",
+      "complexity_level": "Standard"
+    },
+    "roofing4us": {
+      "rank": 5,
+      "unique_file_count": 0,
+      "custom_css_size_kb": 29.0,
+      "major_unique_features": [
+        "US market targeting",
+        "Roofing-specific branding",
+        "Standard grouped products"
+      ],
+      "business_focus": "US roofing market",
+      "complexity_level": "Standard"
+    },
+    "building-supplies-online": {
+      "rank": 6,
+      "unique_file_count": 1,
+      "custom_css_size_kb": 14.6,
+      "major_unique_features": [
+        "Streamlined shopping experience",
+        "No grouped products",
+        "Minimal feature set"
+      ],
+      "business_focus": "General building supplies, simple UX",
+      "complexity_level": "Minimal"
+    }
+  },
+  
+  "feature_matrix": {
+    "enquiry_system": {
+      "stores": ["build4less"],
+      "file_count": 5,
+      "total_size_kb": 115
+    },
+    "grouped_products": {
+      "stores": ["build4less", "tiles4less", "insulation4less", "insulation4us", "roofing4us"],
+      "file_count": 2,
+      "missing_from": ["building-supplies-online"]
+    },
+    "b2b_context_templates": {
+      "stores": ["build4less"],
+      "file_count": 3,
+      "business_impact": "High - enables B2B-specific layouts"
+    },
+    "extended_icon_library": {
+      "stores": ["build4less", "tiles4less", "insulation4less", "insulation4us", "roofing4us"],
+      "icon_count": 10,
+      "missing_from": ["building-supplies-online"],
+      "icons": ["battery", "connection", "fast-delivery-truck", "leaves", "muscle", "piggy-bank", "shield", "tick-circle", "tools", "warranty"]
+    },
+    "unavailable_product_handling": {
+      "full_system": ["build4less", "tiles4less"],
+      "basic_only": ["building-supplies-online", "insulation4less", "insulation4us", "roofing4us"],
+      "files": ["unavailable-product.js", "unavailable-variant-handler.js"]
+    }
+  },
+  
+  "branding_differentiation": {
+    "logo_sizes": {
+      "large_220px": ["build4less", "insulation4less", "insulation4us", "roofing4us"],
+      "medium_180px": ["tiles4less"],
+      "small_70px": ["building-supplies-online"]
+    },
+    "brand_families": {
+      "build4less_family": {
+        "stores": ["build4less"],
+        "logo_style": "With tagline",
+        "favicon_style": "Inverted"
+      },
+      "4less_family": {
+        "stores": ["tiles4less", "insulation4less"],
+        "logo_style": "Brand + 4Less",
+        "favicon_style": "Brand-specific"
+      },
+      "4us_family": {
+        "stores": ["insulation4us", "roofing4us"],
+        "logo_style": "Brand + 4US",
+        "favicon_style": "Shared I4US favicon"
+      },
+      "independent": {
+        "stores": ["building-supplies-online"],
+        "logo_style": "Compact BSO",
+        "favicon_style": "Logo-based"
+      }
+    }
+  },
+  
+  "consolidation_opportunities": {
+    "high_priority": [
+      {
+        "opportunity": "Standardize icon library",
+        "impact": "Medium",
+        "effort": "Low",
+        "stores_affected": ["building-supplies-online"],
+        "description": "Add missing 10 icons to building-supplies-online"
+      },
+      {
+        "opportunity": "Consolidate cart functionality", 
+        "impact": "High",
+        "effort": "Medium",
+        "stores_affected": ["all"],
+        "description": "Currently 6 different cart.js versions, could unify with feature flags"
+      }
+    ],
+    "medium_priority": [
+      {
+        "opportunity": "Parameterize geographic templates",
+        "impact": "Medium", 
+        "effort": "Medium",
+        "stores_affected": ["build4less", "tiles4less", "insulation4less"],
+        "description": "Replace context.gb.json, context.ireland.json with dynamic detection"
+      },
+      {
+        "opportunity": "Feature flag grouped products",
+        "impact": "Medium",
+        "effort": "High", 
+        "stores_affected": ["building-supplies-online"],
+        "description": "Enable/disable grouped products per store instead of missing files"
+      }
+    ],
+    "keep_unique": [
+      {
+        "file_pattern": "config/settings_data.json",
+        "reason": "Store branding and configuration must remain unique"
+      },
+      {
+        "file_pattern": "assets/custom.css",
+        "reason": "Store-specific styling defines brand identity"
+      },
+      {
+        "file_pattern": "enquiry system",
+        "reason": "build4less business differentiator for B2B customers"
+      }
+    ]
+  }
+}
