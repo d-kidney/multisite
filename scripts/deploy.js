@@ -25,6 +25,7 @@ async function deployStore(storeName) {
   
   const themeDir = path.join('themes', storeName);
   const sharedDir = 'shared';
+  const tempDir = path.join('..', 'temp-deploy', storeName);
   
   try {
     // Check if theme directory exists
@@ -32,45 +33,70 @@ async function deployStore(storeName) {
       throw new Error(`Theme directory not found: ${themeDir}`);
     }
     
-    // Step 1: Ensure branch exists
+    // Step 1: Create temp directory with theme files
+    console.log('  📦 Preparing theme files...');
+    await fs.remove(tempDir);
+    await fs.ensureDir(tempDir);
+    
+    // Copy theme files to temp
+    const themeContents = await fs.readdir(themeDir);
+    for (const item of themeContents) {
+      await fs.copy(path.join(themeDir, item), path.join(tempDir, item));
+    }
+    
+    // Copy shared files (if they exist)
+    if (await fs.pathExists(sharedDir)) {
+      const sharedContents = await fs.readdir(sharedDir);
+      if (sharedContents.length > 0) {
+        console.log('  🎨 Applying shared overrides...');
+        for (const item of sharedContents) {
+          await fs.copy(path.join(sharedDir, item), path.join(tempDir, item), { overwrite: true });
+        }
+      }
+    }
+    
+    // Step 2: Ensure branch exists
     console.log(`  🌿 Checking branch ${branch}...`);
     try {
       await execPromise(`git rev-parse --verify ${branch}`);
       console.log(`    Branch ${branch} exists`);
     } catch {
       console.log(`    Creating branch ${branch}...`);
-      await execPromise(`git checkout -b ${branch}`);
+      // Create orphan branch (no history)
+      await execPromise(`git checkout --orphan ${branch}`);
+      // Remove all files from index
+      await execPromise('git rm -rf . 2>/dev/null || true');
+      // Clean working directory
+      const files = await fs.readdir('.');
+      for (const file of files) {
+        if (file !== '.git') {
+          await fs.remove(file);
+        }
+      }
+      // Create initial commit
+      await fs.writeFile('README.md', `# ${storeName} Theme\n\nThis branch contains the deployed theme for ${storeName}.`);
+      await execPromise('git add README.md');
+      await execPromise(`git commit -m "Initial commit for ${branch}"`);
       await execPromise('git checkout main');
     }
     
-    // Step 2: Switch to branch
+    // Step 3: Switch to branch
     console.log(`  📝 Updating ${branch} branch...`);
     await execPromise(`git checkout ${branch}`);
     
-    // Step 3: Remove old files (except .git)
+    // Step 4: Remove old files (except .git)
     const branchFiles = await fs.readdir('.');
     for (const file of branchFiles) {
-      if (file !== '.git' && file !== 'node_modules') {
+      if (file !== '.git') {
         await fs.remove(file);
       }
     }
     
-    // Step 4: Copy theme files to root
-    console.log('  📦 Copying theme files...');
-    const themeContents = await fs.readdir(themeDir);
-    for (const item of themeContents) {
-      await fs.copy(path.join(themeDir, item), item);
-    }
-    
-    // Step 5: Copy shared files (if they exist)
-    if (await fs.pathExists(sharedDir)) {
-      const sharedContents = await fs.readdir(sharedDir);
-      if (sharedContents.length > 0) {
-        console.log('  🎨 Applying shared overrides...');
-        for (const item of sharedContents) {
-          await fs.copy(path.join(sharedDir, item), item, { overwrite: true });
-        }
-      }
+    // Step 5: Copy prepared files from temp
+    console.log('  📂 Copying theme to branch...');
+    const tempContents = await fs.readdir(tempDir);
+    for (const item of tempContents) {
+      await fs.copy(path.join(tempDir, item), item);
     }
     
     // Step 6: Commit changes
@@ -92,6 +118,9 @@ async function deployStore(storeName) {
     // Step 7: Switch back to main
     await execPromise('git checkout main');
     
+    // Clean up temp directory
+    await fs.remove(tempDir);
+    
     console.log(`✅ Successfully deployed ${storeName}!`);
     console.log(`   Branch ${branch} is ready.`);
     console.log(`   Run 'git push origin ${branch}' to push to GitHub.\n`);
@@ -101,6 +130,10 @@ async function deployStore(storeName) {
     // Try to switch back to main on error
     try {
       await execPromise('git checkout main');
+    } catch {}
+    // Clean up temp directory
+    try {
+      await fs.remove(tempDir);
     } catch {}
     throw error;
   }
