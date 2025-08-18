@@ -1,0 +1,649 @@
+{
+  "summary": {
+    "total_files": 437,
+    "identical_all_stores": 298,
+    "identical_5_stores": 23,
+    "identical_4_stores": 5
+  },
+  "shared_candidates": {
+    "assets": [
+      "assets/animations.js",
+      "assets/cart-drawer.js",
+      "assets/collage.css",
+      "assets/collapsible-content.css",
+      "assets/component-cart-drawer.css",
+      "assets/component-cart-notification.css",
+      "assets/component-collection-hero.css",
+      "assets/component-complementary-products.css",
+      "assets/component-deferred-media.css",
+      "assets/component-discounts.css",
+      "assets/component-facets.css",
+      "assets/component-image-with-text.css",
+      "assets/component-list-menu.css",
+      "assets/component-list-payment.css",
+      "assets/component-list-social.css",
+      "assets/component-localization-form.css",
+      "assets/component-modal-video.css",
+      "assets/component-model-viewer-ui.css",
+      "assets/component-newsletter.css",
+      "assets/component-pagination.css",
+      "assets/component-pickup-availability.css",
+      "assets/component-price.css",
+      "assets/component-product-model.css",
+      "assets/component-progress-bar.css",
+      "assets/component-rating.css",
+      "assets/component-search.css",
+      "assets/component-show-more.css",
+      "assets/component-slider.css",
+      "assets/component-swatch-input.css",
+      "assets/component-swatch.css",
+      "assets/component-totals.css",
+      "assets/component-volume-pricing.css",
+      "assets/constants.js",
+      "assets/customer.css",
+      "assets/customer.js",
+      "assets/details-disclosure.js",
+      "assets/details-modal.js",
+      "assets/email-signup-banner-background-mobile.svg",
+      "assets/email-signup-banner-background.svg",
+      "assets/est-delivery-icon.png",
+      "assets/facets.js",
+      "assets/ico-select.svg",
+      "assets/icon-3d-model.svg",
+      "assets/icon-account.svg",
+      "assets/icon-apple.svg",
+      "assets/icon-arrow.svg",
+      "assets/icon-banana.svg",
+      "assets/icon-bottle.svg",
+      "assets/icon-box.svg",
+      "assets/icon-caret.svg",
+      "assets/icon-carrot.svg",
+      "assets/icon-cart-empty.svg",
+      "assets/icon-cart.svg",
+      "assets/icon-chat-bubble.svg",
+      "assets/icon-check-mark.svg",
+      "assets/icon-checkmark.svg",
+      "assets/icon-clipboard.svg",
+      "assets/icon-close-small.svg",
+      "assets/icon-close.svg",
+      "assets/icon-copy.svg",
+      "assets/icon-dairy-free.svg",
+      "assets/icon-dairy.svg",
+      "assets/icon-discount.svg",
+      "assets/icon-dryer.svg",
+      "assets/icon-error.svg",
+      "assets/icon-eye.svg",
+      "assets/icon-facebook.svg",
+      "assets/icon-filter.svg",
+      "assets/icon-fire.svg",
+      "assets/icon-gluten-free.svg",
+      "assets/icon-hamburger.svg",
+      "assets/icon-heart.svg",
+      "assets/icon-info.svg",
+      "assets/icon-instagram.svg",
+      "assets/icon-inventory-status.svg",
+      "assets/icon-iron.svg",
+      "assets/icon-leaf.svg",
+      "assets/icon-leather.svg",
+      "assets/icon-lightning-bolt.svg",
+      "assets/icon-lipstick.svg",
+      "assets/icon-lock.svg",
+      "assets/icon-map-pin.svg",
+      "assets/icon-minus.svg",
+      "assets/icon-nut-free.svg",
+      "assets/icon-padlock.svg",
+      "assets/icon-pants.svg",
+      "assets/icon-pause.svg",
+      "assets/icon-paw-print.svg",
+      "assets/icon-pepper.svg",
+      "assets/icon-perfume.svg",
+      "assets/icon-pinterest.svg",
+      "assets/icon-plane.svg",
+      "assets/icon-plant.svg",
+      "assets/icon-play.svg",
+      "assets/icon-plus.svg",
+      "assets/icon-price-tag.svg",
+      "assets/icon-question-mark.svg",
+      "assets/icon-recycle.svg",
+      "assets/icon-remove.svg",
+      "assets/icon-reset.svg",
+      "assets/icon-return.svg",
+      "assets/icon-ruler.svg",
+      "assets/icon-search.svg",
+      "assets/icon-serving-dish.svg",
+      "assets/icon-share.svg",
+      "assets/icon-shirt.svg",
+      "assets/icon-shoe.svg",
+      "assets/icon-shopify.svg",
+      "assets/icon-silhouette.svg",
+      "assets/icon-snapchat.svg",
+      "assets/icon-snowflake.svg",
+      "assets/icon-star.svg",
+      "assets/icon-stopwatch.svg",
+      "assets/icon-success.svg",
+      "assets/icon-tick.svg",
+      "assets/icon-tiktok.svg",
+      "assets/icon-truck.svg",
+      "assets/icon-tumblr.svg",
+      "assets/icon-twitter.svg",
+      "assets/icon-unavailable.svg",
+      "assets/icon-vimeo.svg",
+      "assets/icon-washing.svg",
+      "assets/icon-youtube.svg",
+      "assets/icon-zoom.svg",
+      "assets/loading-spinner.svg",
+      "assets/localization-form.js",
+      "assets/magnify.js",
+      "assets/main-search.js",
+      "assets/mask-arch.svg",
+      "assets/mask-blobs.css",
+      "assets/media-gallery.js",
+      "assets/newsletter-section.css",
+      "assets/password-modal.js",
+      "assets/pickup-availability.js",
+      "assets/price-per-item.js",
+      "assets/product-modal.js",
+      "assets/product-model.js",
+      "assets/quantity-popover.css",
+      "assets/quantity-popover.js",
+      "assets/quick-add-bulk.js",
+      "assets/quick-add.css",
+      "assets/quick-add.js",
+      "assets/quick-order-list.css",
+      "assets/quick-order-list.js",
+      "assets/recipient-form.js",
+      "assets/search-form.js",
+      "assets/section-collection-subcategories.css",
+      "assets/section-contact-form.css",
+      "assets/section-email-signup-banner.css",
+      "assets/section-featured-blog.css",
+      "assets/section-featured-product.css",
+      "assets/section-footer.css",
+      "assets/section-main-blog.css",
+      "assets/section-main-page.css",
+      "assets/section-multicolumn.css",
+      "assets/section-password.css",
+      "assets/section-related-products.css",
+      "assets/section-rich-text.css",
+      "assets/share.js",
+      "assets/show-more.js",
+      "assets/square.svg",
+      "assets/template-giftcard.css",
+      "assets/theme-editor.js",
+      "assets/video-section.css"
+    ],
+    "locales": [
+      "locales/bg.json",
+      "locales/cs.json",
+      "locales/cs.schema.json",
+      "locales/da.json",
+      "locales/da.schema.json",
+      "locales/de.json",
+      "locales/de.schema.json",
+      "locales/el.json",
+      "locales/es.json",
+      "locales/es.schema.json",
+      "locales/fi.json",
+      "locales/fi.schema.json",
+      "locales/fr.json",
+      "locales/fr.schema.json",
+      "locales/hr.json",
+      "locales/hu.json",
+      "locales/id.json",
+      "locales/it.json",
+      "locales/it.schema.json",
+      "locales/ja.json",
+      "locales/ja.schema.json",
+      "locales/ko.json",
+      "locales/ko.schema.json",
+      "locales/lt.json",
+      "locales/nb.json",
+      "locales/nb.schema.json",
+      "locales/nl.json",
+      "locales/nl.schema.json",
+      "locales/pl.json",
+      "locales/pl.schema.json",
+      "locales/pt-BR.json",
+      "locales/pt-BR.schema.json",
+      "locales/pt-PT.json",
+      "locales/pt-PT.schema.json",
+      "locales/ro.json",
+      "locales/ru.json",
+      "locales/sk.json",
+      "locales/sl.json",
+      "locales/sv.json",
+      "locales/sv.schema.json",
+      "locales/th.json",
+      "locales/th.schema.json",
+      "locales/tr.json",
+      "locales/tr.schema.json",
+      "locales/vi.json",
+      "locales/zh-CN.json",
+      "locales/zh-CN.schema.json",
+      "locales/zh-TW.json",
+      "locales/zh-TW.schema.json"
+    ],
+    "sections": [
+      "sections/announcement-bar.liquid",
+      "sections/apps.liquid",
+      "sections/bulk-quick-order-list.liquid",
+      "sections/cart-drawer.liquid",
+      "sections/cart-live-region-text.liquid",
+      "sections/cart-notification-button.liquid",
+      "sections/collage.liquid",
+      "sections/collapsible-content.liquid",
+      "sections/collection-list.liquid",
+      "sections/collection-people-also-searched-for.liquid",
+      "sections/collection-subcategories.liquid",
+      "sections/contact-form.liquid",
+      "sections/custom-liquid.liquid",
+      "sections/email-signup-banner.liquid",
+      "sections/featured-blog.liquid",
+      "sections/featured-collection.liquid",
+      "sections/featured-product.liquid",
+      "sections/footer.liquid",
+      "sections/image-banner.liquid",
+      "sections/image-with-text.liquid",
+      "sections/main-404.liquid",
+      "sections/main-account.liquid",
+      "sections/main-activate-account.liquid",
+      "sections/main-addresses.liquid",
+      "sections/main-article.liquid",
+      "sections/main-blog.liquid",
+      "sections/main-list-collections.liquid",
+      "sections/main-login.liquid",
+      "sections/main-order.liquid",
+      "sections/main-password-footer.liquid",
+      "sections/main-password-header.liquid",
+      "sections/main-register.liquid",
+      "sections/main-reset-password.liquid",
+      "sections/main-search.liquid",
+      "sections/multicolumn.liquid",
+      "sections/multirow.liquid",
+      "sections/newsletter.liquid",
+      "sections/pickup-availability.liquid",
+      "sections/quick-order-list.liquid",
+      "sections/related-products.liquid",
+      "sections/rich-text.liquid",
+      "sections/video.liquid"
+    ],
+    "snippets": [
+      "snippets/breadcrumbs.liquid",
+      "snippets/card-collection.liquid",
+      "snippets/cart-drawer.liquid",
+      "snippets/cart-notification.liquid",
+      "snippets/collection-people-also-searched-for.liquid",
+      "snippets/country-localization.liquid",
+      "snippets/gift-card-recipient-form.liquid",
+      "snippets/header-search.liquid",
+      "snippets/icon-accordion.liquid",
+      "snippets/icon-with-text.liquid",
+      "snippets/language-localization.liquid",
+      "snippets/loading-spinner.liquid",
+      "snippets/meta-tags.liquid",
+      "snippets/pagination.liquid",
+      "snippets/price-facet.liquid",
+      "snippets/product-media-modal.liquid",
+      "snippets/product-media.liquid",
+      "snippets/product-notice.liquid",
+      "snippets/product-variant-picker.liquid",
+      "snippets/progress-bar.liquid",
+      "snippets/quantity-input.liquid",
+      "snippets/quick-order-list-row.liquid",
+      "snippets/quick-order-list.liquid",
+      "snippets/quick-order-product-row.liquid",
+      "snippets/share-button.liquid",
+      "snippets/social-icons.liquid",
+      "snippets/swatch-input.liquid",
+      "snippets/swatch.liquid"
+    ],
+    "templates": [
+      "templates/404.json",
+      "templates/article.json",
+      "templates/gift_card.liquid",
+      "templates/list-collections.json",
+      "templates/page.contact.json",
+      "templates/page.json",
+      "templates/password.json",
+      "templates/search.json",
+      "templates/customers/account.json",
+      "templates/customers/activate_account.json",
+      "templates/customers/addresses.json",
+      "templates/customers/login.json",
+      "templates/customers/order.json",
+      "templates/customers/register.json",
+      "templates/customers/reset_password.json"
+    ]
+  },
+  "partial_matches": {
+    "five_stores": [
+      {
+        "file": "assets/calc_icon.jpg",
+        "identical_in": [
+          "build4less",
+          "tiles4less",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "building-supplies-online"
+        ]
+      },
+      {
+        "file": "assets/component-accordion.css",
+        "identical_in": [
+          "build4less",
+          "building-supplies-online",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "tiles4less"
+        ]
+      },
+      {
+        "file": "assets/component-card.css",
+        "identical_in": [
+          "build4less",
+          "building-supplies-online",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "tiles4less"
+        ]
+      },
+      {
+        "file": "assets/component-cart-items.css",
+        "identical_in": [
+          "build4less",
+          "tiles4less",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "building-supplies-online"
+        ]
+      },
+      {
+        "file": "assets/component-predictive-search.css",
+        "identical_in": [
+          "build4less",
+          "building-supplies-online",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "tiles4less"
+        ]
+      },
+      {
+        "file": "assets/component-slideshow.css",
+        "identical_in": [
+          "build4less",
+          "tiles4less",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "building-supplies-online"
+        ]
+      },
+      {
+        "file": "assets/predictive-search.js",
+        "identical_in": [
+          "build4less",
+          "tiles4less",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "building-supplies-online"
+        ]
+      },
+      {
+        "file": "assets/product-form.js",
+        "identical_in": [
+          "build4less",
+          "tiles4less",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "building-supplies-online"
+        ]
+      },
+      {
+        "file": "assets/pubsub.js",
+        "identical_in": [
+          "build4less",
+          "tiles4less",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "building-supplies-online"
+        ]
+      },
+      {
+        "file": "assets/section-image-banner.css",
+        "identical_in": [
+          "build4less",
+          "tiles4less",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "building-supplies-online"
+        ]
+      },
+      {
+        "file": "assets/sparkle.gif",
+        "identical_in": [
+          "build4less",
+          "tiles4less",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "building-supplies-online"
+        ]
+      },
+      {
+        "file": "assets/template-collection.css",
+        "identical_in": [
+          "build4less",
+          "tiles4less",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "building-supplies-online"
+        ]
+      },
+      {
+        "file": "config/settings_schema.json",
+        "identical_in": [
+          "build4less",
+          "tiles4less",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "building-supplies-online"
+        ]
+      },
+      {
+        "file": "layout/password.liquid",
+        "identical_in": [
+          "tiles4less",
+          "building-supplies-online",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "build4less"
+        ]
+      },
+      {
+        "file": "sections/cart-icon-bubble.liquid",
+        "identical_in": [
+          "build4less",
+          "tiles4less",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "building-supplies-online"
+        ]
+      },
+      {
+        "file": "sections/main-collection-banner.liquid",
+        "identical_in": [
+          "build4less",
+          "tiles4less",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "building-supplies-online"
+        ]
+      },
+      {
+        "file": "sections/predictive-search.liquid",
+        "identical_in": [
+          "build4less",
+          "building-supplies-online",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "tiles4less"
+        ]
+      },
+      {
+        "file": "snippets/collection-delivery-promotion.liquid",
+        "identical_in": [
+          "build4less",
+          "tiles4less",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "building-supplies-online"
+        ]
+      },
+      {
+        "file": "snippets/facets.liquid",
+        "identical_in": [
+          "build4less",
+          "tiles4less",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "building-supplies-online"
+        ]
+      },
+      {
+        "file": "snippets/header-drawer.liquid",
+        "identical_in": [
+          "build4less",
+          "tiles4less",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "building-supplies-online"
+        ]
+      }
+    ],
+    "four_stores": [
+      {
+        "file": "assets/component-article-card.css",
+        "identical_in": [
+          "build4less",
+          "tiles4less",
+          "building-supplies-online",
+          "insulation4less"
+        ],
+        "different_in": [
+          "insulation4us",
+          "roofing4us"
+        ]
+      },
+      {
+        "file": "assets/section-collection-list.css",
+        "identical_in": [
+          "build4less",
+          "tiles4less",
+          "building-supplies-online",
+          "insulation4less"
+        ],
+        "different_in": [
+          "insulation4us",
+          "roofing4us"
+        ]
+      },
+      {
+        "file": "snippets/article-card.liquid",
+        "identical_in": [
+          "build4less",
+          "tiles4less",
+          "building-supplies-online",
+          "insulation4less"
+        ],
+        "different_in": [
+          "insulation4us",
+          "roofing4us"
+        ]
+      },
+      {
+        "file": "snippets/product-thumbnail.liquid",
+        "identical_in": [
+          "building-supplies-online",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "build4less",
+          "tiles4less"
+        ]
+      },
+      {
+        "file": "templates/cart.json",
+        "identical_in": [
+          "build4less",
+          "insulation4less",
+          "insulation4us",
+          "roofing4us"
+        ],
+        "different_in": [
+          "tiles4less",
+          "building-supplies-online"
+        ]
+      }
+    ]
+  }
+}
