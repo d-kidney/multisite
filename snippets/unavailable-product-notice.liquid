@@ -1,6 +1,11 @@
 {% comment %}
   Snippet: unavailable-product-notice.liquid
   Handles notices for products that are unavailable with alternatives or recommendations
+  
+  Accepts:
+  - product: The product object
+  - variant: The current variant object (optional)
+  - variant_status: The variant's availability status (optional)
 {% endcomment %}
 
 {% render 'bot-detection' %}
@@ -9,8 +14,12 @@
   {% comment %} Show only the original product to bots {% endcomment %}
   {% render 'product-details', product: product %}
 {% else %}
-  {% comment %} Show appropriate notice based on status {% endcomment %}
-  {% assign status = product.metafields.custom.product_availability_status %}
+  {% comment %} Use variant status if provided, otherwise fall back to product status {% endcomment %}
+  {% if variant_status %}
+    {% assign status = variant_status %}
+  {% else %}
+    {% assign status = product.metafields.custom.product_availability_status %}
+  {% endif %}
   
   <div class="unavailable-notice" data-unavailable-notice>
     <div class="notice-icon">
@@ -29,7 +38,7 @@
             We have some recommended alternatives below that may be suitable.
           {% endif %}
         </p>
-      {% elsif status == 'we dont sell' %}
+      {% elsif status == 'not_for_sale' %}
         <h3 class="notice-title">Product Not Currently Available</h3>
         <p class="notice-text">We don't currently sell <strong>{{ product.title }}</strong>. 
           {% if product.metafields.custom.alternative_product %}
