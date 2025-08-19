@@ -1,3 +1,4 @@
+{% assign product_status = product.metafields.custom.product_availability_status %}
 <product-info
   id="MainProduct-{{ section.id }}"
   class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
@@ -8,6 +9,8 @@
   {% if section.settings.image_zoom == 'hover' %}
     data-zoom-on-hover
   {% endif %}
+  data-all-variants-unavailable="{% if product_status == 'discontinued' or product_status == 'not_for_sale' %}true{% else %}false{% endif %}"
+  data-current-variant-status="{{ product.selected_or_first_available_variant.metafields.custom.variant_availability_status }}"
 >
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
@@ -75,6 +78,23 @@
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width">
     {% render 'breadcrumbs' %}
+    {%- comment -%} Unavailable Product Handling {%- endcomment -%}
+    {% if product_status == 'discontinued' or product_status == 'not_for_sale' %}
+      <div class="product product--unavailable" id="original-product-display">
+        {% render 'unavailable-product-notice', product: product %}
+      </div>
+      
+      <script src="{{ 'unavailable-product.js' | asset_url }}" defer="defer"></script>
+      
+      <style>
+        .product--unavailable { display: none; }
+        body.showing-archived .product--unavailable { display: block; }
+        body.showing-archived #alternative-product-container,
+        body.showing-archived #recommended-products-container { display: none !important; }
+        body.showing-alternative .product--unavailable { display: none; }
+      </style>
+    {% endif %}
+    
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper">
         {% render 'product-media-gallery', variant_images: variant_images %}
@@ -659,7 +679,18 @@
                 %}
 
               {%- when 'variant_picker' -%}
-                {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+                {%- comment -%} Product Options: Grouped or Standard {%- endcomment -%}
+                {% if product.metafields.custom.custom_grouped_product %}
+                  {% render 'custom-grouped-product-option-picker', 
+                    product: product, 
+                    section: section,
+                    block: block,
+                    product_form_id: product_form_id
+                  %}
+                  {{ 'custom-grouped-product.css' | asset_url | stylesheet_tag }}
+                {% else %}
+                  {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+                {% endif %}
 
               {%- when 'in_stock_label' -%}
                 <div class="in_stock_label">
@@ -668,13 +699,22 @@
                 </div>
               
               {%- when 'buy_buttons' -%}
-                {%- render 'buy-buttons',
-                  block: block,
-                  product: product,
-                  product_form_id: product_form_id,
-                  section_id: section.id,
-                  show_pickup_availability: true
-                -%}
+                {%- comment -%} Product Availability and Buy Buttons {%- endcomment -%}
+                {% if settings.enable_enquiry_system and product.metafields.custom.product_availability_status != blank %}
+                  {% render 'custom-product-availability', 
+                    product: product, 
+                    product_form_id: product_form_id, 
+                    section_id: section.id 
+                  %}
+                {% else %}
+                  {%- render 'buy-buttons',
+                    block: block,
+                    product: product,
+                    product_form_id: product_form_id,
+                    section_id: section.id,
+                    show_pickup_availability: true
+                  -%}
+                {% endif %}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">

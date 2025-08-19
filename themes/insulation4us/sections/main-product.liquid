@@ -1,3 +1,4 @@
+{% assign product_status = product.metafields.custom.product_availability_status %}
 <product-info
   id="MainProduct-{{ section.id }}"
   class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
@@ -8,6 +9,8 @@
   {% if section.settings.image_zoom == 'hover' %}
     data-zoom-on-hover
   {% endif %}
+  data-all-variants-unavailable="{% if product_status == 'discontinued' or product_status == 'not_for_sale' %}true{% else %}false{% endif %}"
+  data-current-variant-status="{{ product.selected_or_first_available_variant.metafields.custom.variant_availability_status }}"
 >
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
@@ -80,8 +83,21 @@
 
     {% assign product_status = product.metafields.custom.product_availability_status %}
 
-    {% if product_status == 'discontinued' or product_status == 'we dont sell' %}
-      {% render 'unavailable-product-notice', product: product %}
+    {%- comment -%} Unavailable Product Handling {%- endcomment -%}
+    {% if product_status == 'discontinued' or product_status == 'not_for_sale' or product_status == 'we dont sell' %}
+      <div class="product product--unavailable" id="original-product-display">
+        {% render 'unavailable-product-notice', product: product %}
+      </div>
+      
+      <script src="{{ 'unavailable-product.js' | asset_url }}" defer="defer"></script>
+      
+      <style>
+        .product--unavailable { display: none; }
+        body.showing-archived .product--unavailable { display: block; }
+        body.showing-archived #alternative-product-container,
+        body.showing-archived #recommended-products-container { display: none !important; }
+        body.showing-alternative .product--unavailable { display: none; }
+      </style>
     {% endif %}
 
     <!-- Always render the product, but hide it if unavailable -->
@@ -764,13 +780,22 @@
                 </div>
 
               {%- when 'buy_buttons' -%}
-                {%- render 'buy-buttons',
-                  block: block,
-                  product: product,
-                  product_form_id: product_form_id,
-                  section_id: section.id,
-                  show_pickup_availability: true
-                -%}
+                {%- comment -%} Product Availability and Buy Buttons {%- endcomment -%}
+                {% if settings.enable_enquiry_system and product.metafields.custom.product_availability_status != blank %}
+                  {% render 'custom-product-availability', 
+                    product: product, 
+                    product_form_id: product_form_id, 
+                    section_id: section.id 
+                  %}
+                {% else %}
+                  {%- render 'buy-buttons',
+                    block: block,
+                    product: product,
+                    product_form_id: product_form_id,
+                    section_id: section.id,
+                    show_pickup_availability: true
+                  -%}
+                {% endif %}
 
                 {% if product.selected_or_first_available_variant.metafields.custom.sample_product %}
                   {% assign new_class = ' have_sample' %}

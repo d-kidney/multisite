@@ -346,6 +346,11 @@
           </div>
         {%- endif -%}
       </a>
+      
+      {%- comment -%} Enquiry Icon in Header {%- endcomment -%}
+      {% if settings.enable_enquiry_system %}
+        {% render 'enquiry-icon-bubble' %}
+      {% endif %}
     </div>
   </header>
                <!-- Mobile Search Bar --> 

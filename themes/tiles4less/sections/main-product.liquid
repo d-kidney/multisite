@@ -8,6 +8,8 @@
   {% if section.settings.image_zoom == 'hover' %}
     data-zoom-on-hover
   {% endif %}
+  data-all-variants-unavailable="{% if product_status == 'discontinued' or product_status == 'not_for_sale' %}true{% else %}false{% endif %}"
+  data-current-variant-status="{{ product.selected_or_first_available_variant.metafields.custom.variant_availability_status }}"
 >
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
@@ -834,13 +836,22 @@
                 </div>
               
               {%- when 'buy_buttons' -%}
-                {%- render 'buy-buttons',
-                  block: block,
-                  product: product,
-                  product_form_id: product_form_id,
-                  section_id: section.id,
-                  show_pickup_availability: true
-                -%}
+                {%- comment -%} Product Availability and Buy Buttons {%- endcomment -%}
+                {% if settings.enable_enquiry_system and product.metafields.custom.product_availability_status != blank %}
+                  {% render 'custom-product-availability', 
+                    product: product, 
+                    product_form_id: product_form_id, 
+                    section_id: section.id 
+                  %}
+                {% else %}
+                  {%- render 'buy-buttons',
+                    block: block,
+                    product: product,
+                    product_form_id: product_form_id,
+                    section_id: section.id,
+                    show_pickup_availability: true
+                  -%}
+                {% endif %}
 
                 {% if product.selected_or_first_available_variant.metafields.custom.sample_product %}
                   {% assign new_class = ' have_sample' %}

@@ -513,5 +513,30 @@ $(function() {
 });
 </script>
 <!-- Global Footer Auto Collapse END -->
+
+{%- comment -%} Enquiry System Integration {%- endcomment -%}
+{% if settings.enable_enquiry_system %}
+  {{ 'component-enquiry.css' | asset_url | stylesheet_tag }}
+  {{ 'enquiry-checkout-style.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'enquiry-config.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'enquiry.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'enquiry-form.js' | asset_url }}" defer="defer"></script>
+  
+  {% render 'enquiry-drawer' %}
+  {% render 'enquiry-notification' %}
+  
+  <script>
+    // Mock checkout object to prevent pixel errors
+    if (!window.Shopify) window.Shopify = {};
+    if (!window.Shopify.checkout) {
+      window.Shopify.checkout = {
+        email: '',
+        billing_address: {},
+        shipping_address: {}
+      };
+    }
+  </script>
+{% endif %}
+
   </body>
 </html>

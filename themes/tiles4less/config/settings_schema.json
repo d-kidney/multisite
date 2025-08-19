@@ -1480,5 +1480,24 @@
         "default": true
       }
     ]
+  },
+  {
+    "name": "Enquiry System",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_enquiry_system",
+        "label": "Enable Enquiry System",
+        "default": false,
+        "info": "Enable the quote/enquiry system for products marked as POA or custom"
+      },
+      {
+        "type": "text",
+        "id": "enquiry_button_text",
+        "label": "Enquiry Button Text",
+        "default": "Get a Quote",
+        "info": "Text shown on enquiry buttons"
+      }
+    ]
   }
 ]

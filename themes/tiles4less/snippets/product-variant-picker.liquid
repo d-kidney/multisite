@@ -91,4 +91,34 @@
       {{ product.selected_or_first_available_variant | json }}
     </script>
   </variant-selects>
+  
+  {%- comment -%} Variant Unavailability Handling {%- endcomment -%}
+  {% assign has_unavailable_variants = false %}
+  {% for variant in product.variants %}
+    {% assign variant_status = variant.metafields.custom.variant_availability_status %}
+    {% if variant_status == 'discontinued' or variant_status == 'not_for_sale' %}
+      {% assign has_unavailable_variants = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% if has_unavailable_variants %}
+    <div class="product-form__input" data-variant-notice style="display: none;">
+      {% render 'unavailable-variant-notice' %}
+    </div>
+    
+    {%- comment -%} Variant metafields data for JavaScript {%- endcomment -%}
+    <script type="application/json" data-variant-metafields>
+      {
+        {% for variant in product.variants %}
+          "{{ variant.id }}": {
+            "status": "{{ variant.metafields.custom.variant_availability_status }}",
+            "hasAlternatives": {% if variant.metafields.custom.alternative_variant %}true{% else %}false{% endif %}
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      }
+    </script>
+    
+    <script src="{{ 'unavailable-variant-handler.js' | asset_url }}" defer="defer"></script>
+  {% endif %}
 {%- endunless -%}

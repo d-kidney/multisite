@@ -208,3 +208,15 @@
     {%- endif -%}
   </div>
 {% endif %}
+
+{%- comment -%} Enquiry System for POA Products {%- endcomment -%}
+{% if settings.enable_enquiry_system %}
+  {% assign product_status = product.metafields.custom.product_availability_status %}
+  {% if product_status == 'poa' or product_status == 'custom' %}
+    <div class="product-form__buttons">
+      <a href="/pages/enquiry-form" class="button button--full-width button--primary enquiry-link">
+        {{ settings.enquiry_button_text | default: 'Get a Quote' }}
+      </a>
+    </div>
+  {% endif %}
+{% endif %}
