@@ -8,6 +8,89 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
+    "name": "Theme Features",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Feature Flags"
+      },
+      {
+        "type": "paragraph",
+        "content": "Enable or disable theme features. Some features may require additional configuration in other settings sections."
+      },
+      {
+        "type": "checkbox",
+        "id": "enquiry_enabled",
+        "label": "Enable Enquiry System",
+        "default": false,
+        "info": "Allows customers to enquire about products"
+      },
+      {
+        "type": "checkbox",
+        "id": "b2b_features",
+        "label": "Enable B2B Features",
+        "default": false,
+        "info": "Includes delivery calculation, accept alternatives, offload confirmation, mega menu"
+      },
+      {
+        "type": "checkbox",
+        "id": "shipping_protection",
+        "label": "Enable Shipping Protection",
+        "default": false,
+        "info": "Auto-adds shipping protection at checkout (3% of cart value)"
+      },
+      {
+        "type": "checkbox",
+        "id": "tile_calculator",
+        "label": "Enable Tile Calculator",
+        "default": false,
+        "info": "Shows square meter calculations for tile and flooring products"
+      },
+      {
+        "type": "checkbox",
+        "id": "grouped_products",
+        "label": "Enable Grouped Products",
+        "default": true,
+        "info": "Allows product grouping and variant options"
+      },
+      {
+        "type": "checkbox",
+        "id": "advanced_unavailable_products",
+        "label": "Advanced Unavailable Product Handling",
+        "default": false,
+        "info": "Enhanced messaging and alternatives for out-of-stock items"
+      },
+      {
+        "type": "checkbox",
+        "id": "extended_icons",
+        "label": "Use Extended Icon Library",
+        "default": true,
+        "info": "Includes additional icon assets for enhanced UI"
+      },
+      {
+        "type": "checkbox",
+        "id": "geographic_context",
+        "label": "Enable Geographic Context",
+        "default": false,
+        "info": "Adjusts content based on customer location (GB/Ireland/US)"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_reviews",
+        "label": "Enable Product Reviews",
+        "default": false,
+        "info": "Shows product review integration (requires Reviews.io or similar)"
+      },
+      {
+        "type": "checkbox",
+        "id": "clerk_analytics",
+        "label": "Enable Clerk Analytics",
+        "default": false,
+        "info": "Enables Clerk.io tracking and personalization"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.logo.name",
     "settings": [
       {
