@@ -154,6 +154,18 @@
             {%- if show_dynamic_checkout -%}
               {{ form | payment_button }}
             {%- endif -%}
+            
+            {%- comment -%} Add to enquiry link for standard products {%- endcomment -%}
+            {% if settings.enable_enquiry_system %}
+              <add-to-enquiry data-product-id="{{ product.id }}" style="display: block; margin-top: 0.75rem;">
+                <button type="button" class="enquiry-link-alternative">
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="enquiry-link-icon">
+                    <path d="M6 2h8M6 6h8M6 10h8M6 14h8M3 2h1M3 6h1M3 10h1M3 14h1M3 18h14a2 2 0 002-2V4a2 2 0 00-2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span>Add to Enquiry</span>
+                </button>
+              </add-to-enquiry>
+            {% endif %}
           </div>
         {%- endform -%}
       </product-form>

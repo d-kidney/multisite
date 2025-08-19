@@ -329,6 +329,13 @@
             {% render block %}
         {%- endcase -%}
       {%- endfor -%}
+      
+      {%- comment -%} Enquiry Icon in Header {%- endcomment -%}
+      {% if settings.enable_enquiry_system %}
+        <a href="/pages/enquiry-form" class="header__icon header__icon--enquiry link focus-inset" id="enquiry-icon-bubble">
+          {% render 'enquiry-icon-bubble' %}
+        </a>
+      {% endif %}
 
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
           {% if cart == empty %}
@@ -346,11 +353,6 @@
           </div>
         {%- endif -%}
       </a>
-      
-      {%- comment -%} Enquiry Icon in Header {%- endcomment -%}
-      {% if settings.enable_enquiry_system %}
-        {% render 'enquiry-icon-bubble' %}
-      {% endif %}
     </div>
   </header>
                <!-- Mobile Search Bar --> 
