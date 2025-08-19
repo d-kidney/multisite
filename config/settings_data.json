@@ -128,6 +128,7 @@
     "show_cart_note": true,
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-289aa3fd-ef69-4e7d-817f-ad25d3266a09",
+    "enable_enquiry_system": true,
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
