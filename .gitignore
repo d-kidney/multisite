@@ -31,3 +31,20 @@ temp/
 # Build outputs
 dist/
 build/
+
+# Analysis and documentation files
+*_ANALYSIS*.md
+*_analysis.json
+*_analysis.py
+analyze_*.py
+copy_*.py
+FEATURE_IMPLEMENTATION_GUIDE.md
+NON_SHARED_FILES_ANALYSIS_REPORT.md
+THEME_DIFFERENCES_ANALYSIS.md
+COMPREHENSIVE_FEATURE_ANALYSIS.md
+README.md
+*.json
+!package.json
+!settings_schema*.json
+!site_configurations.json
+!example_site_settings.json
