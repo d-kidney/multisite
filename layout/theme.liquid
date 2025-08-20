@@ -95,11 +95,22 @@
       // Load store-specific configuration
       (function() {
         var storeId = window.storeIdentifier || 'build4less';
-        var configUrl = '{{ 'config-' | append: '' | asset_url }}'.replace('config-', 'config-' + storeId);
+        console.log('Loading config for store:', storeId);
+        
+        // Build the config URL
+        var baseAssetUrl = '{{ "config-build4less.json" | asset_url }}';
+        var configUrl = baseAssetUrl.replace('config-build4less.json', 'config-' + storeId + '.json');
+        console.log('Config URL:', configUrl);
         
         // Fetch and set configuration
-        fetch(configUrl.replace('.css', '.json'))
-          .then(response => response.json())
+        fetch(configUrl)
+          .then(response => {
+            console.log('Config response status:', response.status);
+            if (!response.ok) {
+              throw new Error('Failed to load config: ' + response.status);
+            }
+            return response.json();
+          })
           .then(config => {
             window.storeConfig = config;
             window.theme = window.theme || {};
@@ -112,37 +123,48 @@
             console.log('Configuration loaded for store:', storeId);
             console.log('Full config:', config);
             
-            // Create config test display
-            setTimeout(function() {
-              var testDiv = document.createElement('div');
-              testDiv.id = 'config-test-display';
-              testDiv.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: white; border: 2px solid black; padding: 15px; z-index: 999998; max-width: 400px; font-family: monospace; font-size: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);';
-              
-              var configHtml = '<h3 style="margin-top: 0; color: ' + config.store_settings.primary_color + ';">CONFIG TEST: ' + config.store_settings.store_name + '</h3>';
-              configHtml += '<p><strong>Store Code:</strong> ' + config.store_settings.store_code + '</p>';
-              configHtml += '<p><strong>Primary Color:</strong> <span style="background: ' + config.store_settings.primary_color + '; color: white; padding: 2px 5px;">' + config.store_settings.primary_color + '</span></p>';
-              configHtml += '<hr style="margin: 10px 0;">';
-              configHtml += '<h4>Features:</h4>';
-              configHtml += '<ul style="margin: 5px 0; padding-left: 20px;">';
-              configHtml += '<li>Enquiry Enabled: <strong style="color: ' + (config.features.enquiry_enabled ? 'green' : 'red') + '">' + config.features.enquiry_enabled + '</strong></li>';
-              configHtml += '<li>B2B Features: <strong style="color: ' + (config.features.b2b_features ? 'green' : 'red') + '">' + config.features.b2b_features + '</strong></li>';
-              configHtml += '<li>Delivery Calc: <strong style="color: ' + (config.features.delivery_calc ? 'green' : 'red') + '">' + config.features.delivery_calc + '</strong></li>';
-              configHtml += '<li>Accept Alternatives: <strong style="color: ' + (config.features.accept_alternatives ? 'green' : 'red') + '">' + config.features.accept_alternatives + '</strong></li>';
-              configHtml += '</ul>';
-              configHtml += '<hr style="margin: 10px 0;">';
-              configHtml += '<h4>UI Settings:</h4>';
-              configHtml += '<ul style="margin: 5px 0; padding-left: 20px;">';
-              configHtml += '<li>Show Inc VAT: <strong>' + config.ui_settings.show_inc_vat_prices + '</strong></li>';
-              configHtml += '<li>Show Exc VAT: <strong>' + config.ui_settings.show_exc_vat_prices + '</strong></li>';
-              configHtml += '</ul>';
-              configHtml += '<button onclick="document.getElementById(\'config-test-display\').remove()" style="margin-top: 10px; padding: 5px 10px; background: #ccc; border: none; cursor: pointer;">Close</button>';
-              
-              testDiv.innerHTML = configHtml;
-              document.body.appendChild(testDiv);
-            }, 1000); // Wait 1 second to ensure config is fully loaded
+            // Create config test display - run immediately
+            var testDiv = document.createElement('div');
+            testDiv.id = 'config-test-display';
+            testDiv.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: white; border: 2px solid black; padding: 15px; z-index: 999998; max-width: 400px; font-family: monospace; font-size: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);';
+            
+            var configHtml = '<h3 style="margin-top: 0; color: ' + config.store_settings.primary_color + ';">CONFIG TEST: ' + config.store_settings.store_name + '</h3>';
+            configHtml += '<p><strong>Store Code:</strong> ' + config.store_settings.store_code + '</p>';
+            configHtml += '<p><strong>Primary Color:</strong> <span style="background: ' + config.store_settings.primary_color + '; color: white; padding: 2px 5px;">' + config.store_settings.primary_color + '</span></p>';
+            configHtml += '<hr style="margin: 10px 0;">';
+            configHtml += '<h4>Features:</h4>';
+            configHtml += '<ul style="margin: 5px 0; padding-left: 20px;">';
+            configHtml += '<li>Enquiry Enabled: <strong style="color: ' + (config.features.enquiry_enabled ? 'green' : 'red') + '">' + config.features.enquiry_enabled + '</strong></li>';
+            configHtml += '<li>B2B Features: <strong style="color: ' + (config.features.b2b_features ? 'green' : 'red') + '">' + config.features.b2b_features + '</strong></li>';
+            configHtml += '<li>Delivery Calc: <strong style="color: ' + (config.features.delivery_calc ? 'green' : 'red') + '">' + config.features.delivery_calc + '</strong></li>';
+            configHtml += '<li>Accept Alternatives: <strong style="color: ' + (config.features.accept_alternatives ? 'green' : 'red') + '">' + config.features.accept_alternatives + '</strong></li>';
+            configHtml += '</ul>';
+            configHtml += '<hr style="margin: 10px 0;">';
+            configHtml += '<h4>UI Settings:</h4>';
+            configHtml += '<ul style="margin: 5px 0; padding-left: 20px;">';
+            configHtml += '<li>Show Inc VAT: <strong>' + config.ui_settings.show_inc_vat_prices + '</strong></li>';
+            configHtml += '<li>Show Exc VAT: <strong>' + config.ui_settings.show_exc_vat_prices + '</strong></li>';
+            configHtml += '</ul>';
+            configHtml += '<button onclick="document.getElementById(\'config-test-display\').remove()" style="margin-top: 10px; padding: 5px 10px; background: #ccc; border: none; cursor: pointer;">Close</button>';
+            
+            testDiv.innerHTML = configHtml;
+            document.body.appendChild(testDiv);
           })
           .catch(error => {
             console.error('Failed to load store configuration:', error);
+            console.error('Config URL was:', configUrl);
+            
+            // Show error display
+            var errorDiv = document.createElement('div');
+            errorDiv.id = 'config-error-display';
+            errorDiv.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: #ffcccc; border: 2px solid red; padding: 15px; z-index: 999998; max-width: 400px; font-family: monospace; font-size: 12px;';
+            errorDiv.innerHTML = '<h3 style="color: red; margin-top: 0;">CONFIG LOAD ERROR</h3>' +
+              '<p>Failed to load config for store: ' + storeId + '</p>' +
+              '<p>URL: ' + configUrl + '</p>' +
+              '<p>Error: ' + error.message + '</p>' +
+              '<button onclick="document.getElementById(\'config-error-display\').remove()" style="margin-top: 10px; padding: 5px 10px;">Close</button>';
+            document.body.appendChild(errorDiv);
+            
             // Fallback to default configuration
             window.storeConfig = {
               features: {},
@@ -467,6 +489,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %} inc_vat">
+    
+    <!-- Config Test Display - Simple version that always shows -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Simple test display to verify config loading
+        setTimeout(function() {
+          var simpleTest = document.createElement('div');
+          simpleTest.style.cssText = 'position: fixed; top: 60px; left: 20px; background: yellow; border: 2px solid black; padding: 10px; z-index: 999999; font-family: monospace; font-size: 14px;';
+          
+          var content = '<strong>Config Test Status:</strong><br>';
+          content += 'Store ID: ' + (window.storeIdentifier || 'NOT SET') + '<br>';
+          content += 'Config Loaded: ' + (window.storeConfig ? 'YES' : 'NO') + '<br>';
+          if (window.storeConfig) {
+            content += 'Store Name: ' + (window.storeConfig.store_settings ? window.storeConfig.store_settings.store_name : 'N/A') + '<br>';
+            content += 'Enquiry: ' + (window.storeConfig.features ? window.storeConfig.features.enquiry_enabled : 'N/A');
+          }
+          content += '<br><button onclick="this.parentElement.remove()">X</button>';
+          
+          simpleTest.innerHTML = content;
+          document.body.appendChild(simpleTest);
+        }, 2000); // Wait 2 seconds for config to load
+      });
+    </script>
 
     <!-- Global Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZC4QP"
