@@ -1,0 +1,24 @@
+/* Building Supplies Online Store-Specific Styles */
+:root {
+  --store-primary-color: #228B22;
+  --store-secondary-color: #333333;
+}
+
+/* Hide all advanced features */
+.enquiry-drawer,
+.enquiry-icon-bubble,
+.add-to-enquiry-button,
+.b2b-features,
+.delivery-calculation,
+.accept-alternatives,
+.offload-confirmation,
+.tile-calculator,
+.shipping-protection {
+  display: none !important;
+}
+
+/* Show basic features */
+.grouped-products,
+.unavailable-products {
+  display: block !important;
+}

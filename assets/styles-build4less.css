@@ -1,0 +1,30 @@
+/* Build4Less Store-Specific Styles */
+:root {
+  --store-primary-color: #0066cc;
+  --store-secondary-color: #333333;
+}
+
+/* Show enquiry features */
+.enquiry-drawer,
+.enquiry-icon-bubble,
+.add-to-enquiry-button {
+  display: block !important;
+}
+
+/* Show B2B features */
+.b2b-features,
+.delivery-calculation,
+.accept-alternatives,
+.offload-confirmation {
+  display: block !important;
+}
+
+/* Hide tile calculator */
+.tile-calculator {
+  display: none !important;
+}
+
+/* Hide shipping protection */
+.shipping-protection {
+  display: none !important;
+}

@@ -1,0 +1,26 @@
+{
+  "features": {
+    "enquiry_enabled": false,
+    "grouped_products": true,
+    "unavailable_products": true,
+    "shipping_protection": true,
+    "tile_calculator": false,
+    "b2b_features": false,
+    "delivery_calc": false,
+    "accept_alternatives": false,
+    "offload_confirmation": false
+  },
+  "store_settings": {
+    "store_name": "Insulation4US",
+    "store_code": "i4us",
+    "primary_color": "#FF6600",
+    "secondary_color": "#003366",
+    "shipping_protection_variant_ids": [41234567890, 41234567891, 41234567892],
+    "shipping_protection_percentage": 3
+  },
+  "ui_settings": {
+    "show_inc_vat_prices": false,
+    "show_exc_vat_prices": true,
+    "default_price_display": "exc_vat"
+  }
+}

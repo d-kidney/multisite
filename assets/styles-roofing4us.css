@@ -1,0 +1,36 @@
+/* Roofing4US Store-Specific Styles */
+:root {
+  --store-primary-color: #8B0000;
+  --store-secondary-color: #003366;
+}
+
+/* Hide advanced features */
+.enquiry-drawer,
+.enquiry-icon-bubble,
+.add-to-enquiry-button,
+.b2b-features,
+.delivery-calculation,
+.accept-alternatives,
+.offload-confirmation,
+.tile-calculator {
+  display: none !important;
+}
+
+/* Show shipping protection */
+.shipping-protection {
+  display: block !important;
+}
+
+/* Show basic features */
+.grouped-products,
+.unavailable-products {
+  display: block !important;
+}
+
+/* US-specific pricing display */
+.price-exc-vat {
+  display: block !important;
+}
+.price-inc-vat {
+  display: none !important;
+}

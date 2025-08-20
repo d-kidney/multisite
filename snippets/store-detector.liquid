@@ -1,0 +1,38 @@
+{% comment %}
+  Store Detection System
+  Detects which store is being accessed and sets appropriate variables
+{% endcomment %}
+
+{% assign store_domain = shop.permanent_domain %}
+
+{% comment %} Detect store based on domain patterns {% endcomment %}
+{% if store_domain contains 'build-4-less' or store_domain contains 'build4less' %}
+  {% assign store_identifier = 'build4less' %}
+  {% assign store_name = 'Build4Less' %}
+{% elsif store_domain contains 'tiles-4-less' or store_domain contains 'tiles4less' %}
+  {% assign store_identifier = 'tiles4less' %}
+  {% assign store_name = 'Tiles4Less' %}
+{% elsif store_domain contains 'building-supplies-online' or store_domain contains 'bso' %}
+  {% assign store_identifier = 'bso' %}
+  {% assign store_name = 'Building Supplies Online' %}
+{% elsif store_domain contains 'insulation-4-less' or store_domain contains 'insulation4less' %}
+  {% assign store_identifier = 'insulation4less' %}
+  {% assign store_name = 'Insulation4Less' %}
+{% elsif store_domain contains 'insulation-4-us' or store_domain contains 'insulation4us' %}
+  {% assign store_identifier = 'insulation4us' %}
+  {% assign store_name = 'Insulation4US' %}
+{% elsif store_domain contains 'roofing-4-us' or store_domain contains 'roofing4us' %}
+  {% assign store_identifier = 'roofing4us' %}
+  {% assign store_name = 'Roofing4US' %}
+{% else %}
+  {% comment %} Default to build4less if unknown {% endcomment %}
+  {% assign store_identifier = 'build4less' %}
+  {% assign store_name = 'Build4Less' %}
+{% endif %}
+
+{% comment %} Set JavaScript variables for client-side access {% endcomment %}
+<script>
+  window.storeIdentifier = '{{ store_identifier }}';
+  window.storeName = '{{ store_name }}';
+  window.storeDomain = '{{ store_domain }}';
+</script>

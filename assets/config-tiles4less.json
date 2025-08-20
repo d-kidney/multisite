@@ -1,0 +1,26 @@
+{
+  "features": {
+    "enquiry_enabled": false,
+    "grouped_products": true,
+    "unavailable_products": true,
+    "shipping_protection": false,
+    "tile_calculator": true,
+    "b2b_features": true,
+    "delivery_calc": true,
+    "accept_alternatives": true,
+    "offload_confirmation": true
+  },
+  "store_settings": {
+    "store_name": "Tiles4Less",
+    "store_code": "t4l",
+    "primary_color": "#8B4513",
+    "secondary_color": "#333333",
+    "shipping_protection_variant_ids": [],
+    "shipping_protection_percentage": 3
+  },
+  "ui_settings": {
+    "show_inc_vat_prices": true,
+    "show_exc_vat_prices": true,
+    "default_price_display": "inc_vat"
+  }
+}
