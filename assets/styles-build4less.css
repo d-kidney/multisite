@@ -4,6 +4,32 @@
   --store-secondary-color: #333333;
 }
 
+/* TESTING: Very visible changes to confirm store detection */
+body {
+  border-top: 10px solid #0066cc !important; /* Blue border for Build4Less */
+}
+
+.header {
+  background-color: #e6f2ff !important; /* Light blue background */
+}
+
+/* Add a banner to confirm Build4Less styles are loaded */
+body::before {
+  content: "BUILD4LESS STYLES ACTIVE - Store Detection Working";
+  display: block;
+  background-color: #0066cc;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999999;
+}
+
 /* Show enquiry features */
 .enquiry-drawer,
 .enquiry-icon-bubble,

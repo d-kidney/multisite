@@ -4,6 +4,32 @@
   --store-secondary-color: #333333;
 }
 
+/* TESTING: Very visible changes to confirm store detection */
+body {
+  border-top: 10px solid #228B22 !important; /* Green border for BSO */
+}
+
+.header {
+  background-color: #f0fff0 !important; /* Light green background */
+}
+
+/* Add a banner to confirm BSO styles are loaded */
+body::before {
+  content: "BSO STYLES ACTIVE - Store Detection Working";
+  display: block;
+  background-color: #228B22;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999999;
+}
+
 /* Hide all advanced features */
 .enquiry-drawer,
 .enquiry-icon-bubble,
