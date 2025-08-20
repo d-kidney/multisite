@@ -526,8 +526,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       {%- render 'cart-drawer' -%}
     {%- endif -%}
     
-    {%- render 'enquiry-drawer' -%}
-    {%- render 'enquiry-notification' -%}
+    {%- comment -%} Enquiry features - controlled by config {%- endcomment -%}
+    <div id="enquiry-features-wrapper" style="display: none;">
+      {%- render 'enquiry-drawer' -%}
+      {%- render 'enquiry-notification' -%}
+    </div>
+    <script>
+      // Show/hide enquiry features based on config
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          if (window.storeConfig && window.storeConfig.features && window.storeConfig.features.enquiry_enabled) {
+            document.getElementById('enquiry-features-wrapper').style.display = 'block';
+            console.log('Enquiry features enabled via config');
+          } else {
+            console.log('Enquiry features disabled via config');
+            // Also hide the enquiry icon in header
+            var enquiryIcon = document.getElementById('enquiry-icon-bubble');
+            if (enquiryIcon) enquiryIcon.style.display = 'none';
+          }
+        }, 100); // Short delay to ensure config is loaded
+      });
+    </script>
     
     {% sections 'header-group' %}
 

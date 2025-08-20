@@ -22,6 +22,25 @@
   - product: The product object (optional, used to check for custom item_type metafield)
 {% endcomment %}
 
+{% comment %}Check if delivery calculation is enabled in config{% endcomment %}
+<div class="delivery-calc-wrapper" data-feature="delivery_calc" style="display: none;">
+<script>
+  // Show/hide delivery calculation based on config
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      var deliveryCalcs = document.querySelectorAll('[data-feature="delivery_calc"]');
+      if (window.storeConfig && window.storeConfig.features && window.storeConfig.features.delivery_calc) {
+        deliveryCalcs.forEach(function(el) {
+          el.style.display = 'block';
+        });
+        console.log('Delivery calculation enabled via config');
+      } else {
+        console.log('Delivery calculation disabled via config');
+      }
+    }, 100);
+  });
+</script>
+
 {% comment %}Determine item type from product metafield, vendor metafield, or default to "Item"{% endcomment %}
 {% assign item_type = 'Item' %}
 {% if product != blank and product.metafields.custom.item_type != blank %}
@@ -809,3 +828,6 @@
       {% endif %}
     </span>
 {% endcase %}
+
+</div>
+{% comment %}End of delivery-calc config wrapper{% endcomment %}
