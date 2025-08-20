@@ -190,8 +190,8 @@
               {{ form | payment_button }}
             {%- endif -%}
             
-            {%- comment -%} Add to enquiry link for standard products {%- endcomment -%}
-            <add-to-enquiry data-product-id="{{ product.id }}" style="display: block; margin-top: 0.75rem;">
+            {%- comment -%} Add to enquiry link for standard products - only if enabled in config {%- endcomment -%}
+            <add-to-enquiry data-product-id="{{ product.id }}" style="display: none; margin-top: 0.75rem;" class="config-controlled-enquiry">
               <button type="button" class="enquiry-link-alternative">
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="enquiry-link-icon">
                   <path d="M6 2h8M6 6h8M6 10h8M6 14h8M3 2h1M3 6h1M3 10h1M3 14h1M3 18h14a2 2 0 002-2V4a2 2 0 00-2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -199,6 +199,22 @@
                 <span>Add to Enquiry</span>
               </button>
             </add-to-enquiry>
+            <script>
+              // Show enquiry button only if enabled in config
+              document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(function() {
+                  if (window.storeConfig && window.storeConfig.features && window.storeConfig.features.enquiry_enabled) {
+                    var enquiryElements = document.querySelectorAll('.config-controlled-enquiry');
+                    enquiryElements.forEach(function(el) {
+                      el.style.display = 'block';
+                    });
+                    console.log('Enquiry buttons shown - feature enabled in config');
+                  } else {
+                    console.log('Enquiry buttons hidden - feature disabled in config');
+                  }
+                }, 1500); // Wait for config to load
+              });
+            </script>
           </div>
         {%- endform -%}
       </product-form>

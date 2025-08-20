@@ -107,6 +107,39 @@
             window.theme.storeSettings = config.store_settings;
             // Make config available to Liquid via meta tags for immediate use
             document.documentElement.setAttribute('data-store', storeId);
+            
+            // TEST: Display loaded configuration
+            console.log('Configuration loaded for store:', storeId);
+            console.log('Full config:', config);
+            
+            // Create config test display
+            setTimeout(function() {
+              var testDiv = document.createElement('div');
+              testDiv.id = 'config-test-display';
+              testDiv.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: white; border: 2px solid black; padding: 15px; z-index: 999998; max-width: 400px; font-family: monospace; font-size: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);';
+              
+              var configHtml = '<h3 style="margin-top: 0; color: ' + config.store_settings.primary_color + ';">CONFIG TEST: ' + config.store_settings.store_name + '</h3>';
+              configHtml += '<p><strong>Store Code:</strong> ' + config.store_settings.store_code + '</p>';
+              configHtml += '<p><strong>Primary Color:</strong> <span style="background: ' + config.store_settings.primary_color + '; color: white; padding: 2px 5px;">' + config.store_settings.primary_color + '</span></p>';
+              configHtml += '<hr style="margin: 10px 0;">';
+              configHtml += '<h4>Features:</h4>';
+              configHtml += '<ul style="margin: 5px 0; padding-left: 20px;">';
+              configHtml += '<li>Enquiry Enabled: <strong style="color: ' + (config.features.enquiry_enabled ? 'green' : 'red') + '">' + config.features.enquiry_enabled + '</strong></li>';
+              configHtml += '<li>B2B Features: <strong style="color: ' + (config.features.b2b_features ? 'green' : 'red') + '">' + config.features.b2b_features + '</strong></li>';
+              configHtml += '<li>Delivery Calc: <strong style="color: ' + (config.features.delivery_calc ? 'green' : 'red') + '">' + config.features.delivery_calc + '</strong></li>';
+              configHtml += '<li>Accept Alternatives: <strong style="color: ' + (config.features.accept_alternatives ? 'green' : 'red') + '">' + config.features.accept_alternatives + '</strong></li>';
+              configHtml += '</ul>';
+              configHtml += '<hr style="margin: 10px 0;">';
+              configHtml += '<h4>UI Settings:</h4>';
+              configHtml += '<ul style="margin: 5px 0; padding-left: 20px;">';
+              configHtml += '<li>Show Inc VAT: <strong>' + config.ui_settings.show_inc_vat_prices + '</strong></li>';
+              configHtml += '<li>Show Exc VAT: <strong>' + config.ui_settings.show_exc_vat_prices + '</strong></li>';
+              configHtml += '</ul>';
+              configHtml += '<button onclick="document.getElementById(\'config-test-display\').remove()" style="margin-top: 10px; padding: 5px 10px; background: #ccc; border: none; cursor: pointer;">Close</button>';
+              
+              testDiv.innerHTML = configHtml;
+              document.body.appendChild(testDiv);
+            }, 1000); // Wait 1 second to ensure config is fully loaded
           })
           .catch(error => {
             console.error('Failed to load store configuration:', error);
